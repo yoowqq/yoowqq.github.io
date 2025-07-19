@@ -110,24 +110,18 @@
 <h4 id="1-2-数据判断的几种方法"><a href="#1-2-数据判断的几种方法" class="headerlink" title="1.2 数据判断的几种方法"></a>1.2 数据判断的几种方法</h4><ul>
 <li>typeof：只能用于判断基本数据类型和简单引用类型（数组），存在局限：<strong>typeof 数组 &#x3D; Object</strong> , <strong>typeof null &#x3D; Object</strong> 且 <strong>typeof 对象不能得到具体的类型</strong>。</li>
 </ul>
-<blockquote>
-<p>[!TIP]<br>typeof会将null判断为Object，原因是typeof会将所有传进去的值都转成二进制，而js制定的规则会认为二进制前三个值为0的是对象，遵循其他语言的原则js将null定为一长串的0，所以会被误判为对象</p>
-</blockquote>
+<p><strong>💡 TIP</strong><br>typeof会将null判断为Object，原因是typeof会将所有传进去的值都转成二进制，而js制定的规则会认为二进制前三个值为0的是对象，遵循其他语言的原则js将null定为一长串的0，所以会被误判为对象</p>
 <ul>
 <li><p>instanceof: 不能用于判断基本数据类型，用于判断复杂的引用数据类型。a instanceof A 是通过判断A(构造函数)的原型（prototype）是否位于对象a的隐式原型链（proto）上（用于判断一个实例是否属于某个数据类）</p>
 </li>
 <li><p>constructor：可以用于判断基本数据类型和复杂的引用数据类型。a.constructor &#x3D; A 是沿着a的隐式原型链上查找constructor属性，检查有与A（构造函数）相等的。（用于判断一个实例的constructor属性是否符合预估类）缺点在于constructor属性容易被修改，导致判断有误。</p>
 </li>
 </ul>
-<blockquote>
-<p>[!TIP]<br>instanceof和constructor判断基本数据类型的区别在于：基本数据类型不是对象，所以没有原型链，而constructor会将其隐式包装为对象</p>
-</blockquote>
+<p><strong>💡 TIP</strong><br>instanceof和constructor判断基本数据类型的区别在于：基本数据类型不是对象，所以没有原型链，而constructor会将其隐式包装为对象</p>
 <ul>
 <li>Object.prototype.toString().call()：基本和引用数据类型皆可判断，但自定义类只会显示[Object Object],内置类可以显示具体情况。</li>
 </ul>
-<blockquote>
-<p>[!TIP]<br>JavaScript 引擎在创建每个对象时，都会给它分配一个 [[Class]] 内部属性，用于标识对象的类型。这个属性是 不可变的，无法通过 JavaScript 代码直接修改，因此 Object.prototype.toString.call() 能稳定返回正确的类型。</p>
-</blockquote>
+<p><strong>💡 TIP</strong><br>JavaScript 引擎在创建每个对象时，都会给它分配一个 [[Class]] 内部属性，用于标识对象的类型。这个属性是 不可变的，无法通过 JavaScript 代码直接修改，因此 Object.prototype.toString.call() 能稳定返回正确的类型。</p>
 <ul>
 <li>一些常考的判断情况：</li>
 </ul>
@@ -156,9 +150,7 @@
 <li>函数工厂（其中经典的有函数柯里化）</li>
 <li>防抖&#x2F;节流函数</li>
 </ul>
-<blockquote>
-<p>[!TIP]<br>闭包导致变量不会被垃圾回收机制回收，造成内存消耗闭包中的变量不会被销毁，原因在于闭包保留了对变量的引用，形成了一个作用域链。只要闭包存在，它所引用的变量就会一直存在于内存中，不会被垃圾回收机制回收。</p>
-</blockquote>
+<p><strong>💡 TIP</strong><br>闭包导致变量不会被垃圾回收机制回收，造成内存消耗闭包中的变量不会被销毁，原因在于闭包保留了对变量的引用，形成了一个作用域链。只要闭包存在，它所引用的变量就会一直存在于内存中，不会被垃圾回收机制回收。</p>
 <h2 id="🚀-二、核心概念"><a href="#🚀-二、核心概念" class="headerlink" title="🚀 二、核心概念"></a>🚀 二、核心概念</h2><h3 id="1-异步"><a href="#1-异步" class="headerlink" title="1. 异步"></a>1. 异步</h3><h3 id="2-事件传播、冒泡、委托"><a href="#2-事件传播、冒泡、委托" class="headerlink" title="2. 事件传播、冒泡、委托"></a>2. 事件传播、冒泡、委托</h3><h3 id="3-原型链和继承"><a href="#3-原型链和继承" class="headerlink" title="3. 原型链和继承"></a>3. 原型链和继承</h3><h2 id="📊-三、ES6-新特性"><a href="#📊-三、ES6-新特性" class="headerlink" title="📊 三、ES6+新特性"></a>📊 三、ES6+新特性</h2><h2 id="🌐-四、浏览器知识"><a href="#🌐-四、浏览器知识" class="headerlink" title="🌐 四、浏览器知识"></a>🌐 四、浏览器知识</h2><h2 id="⚙️-五、框架与工程化"><a href="#⚙️-五、框架与工程化" class="headerlink" title="⚙️ 五、框架与工程化"></a>⚙️ 五、框架与工程化</h2><h2 id="🧮-六、其他"><a href="#🧮-六、其他" class="headerlink" title="🧮 六、其他"></a>🧮 六、其他</h2>
       
     </div>
