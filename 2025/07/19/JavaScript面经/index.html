@@ -14,7 +14,7 @@
 <meta property="og:description" content="🔥 JavaScript 面试复习指南   📚 目录        一、JavaScript 基础     二、核心概念     三、ES6+新特性     四、浏览器知识     五、框架与工程化       🧱 一、JavaScript 基础1. 数据类型1.1 基础数据类型和引用数据类型基础数据类型 ：string,number,bigInt,undefined,null,symbol">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-07-19T03:32:42.000Z">
-<meta property="article:modified_time" content="2025-07-19T16:32:54.395Z">
+<meta property="article:modified_time" content="2025-07-19T16:36:07.788Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -179,7 +179,7 @@
 <li>apply：参数以数组形式传入，立即执行，func.apply(thisArg, [argsArray])</li>
 <li>bind：参数逐个列出且可以部分应用参数（柯里化），不会立即执行，需要手动调用</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">a</span> + <span class="variable language_">this</span>.<span class="property">b</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Func</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">a</span> = a;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">b</span> = b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> temp = <span class="keyword">new</span> <span class="title class_">Func</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">const</span> s = add.<span class="title function_">bind</span>(temp);</span><br><span class="line"><span class="title function_">s</span>()</span><br></pre></td></tr></table></figure>
 
 
 
