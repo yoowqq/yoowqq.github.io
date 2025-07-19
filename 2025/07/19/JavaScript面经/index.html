@@ -14,7 +14,7 @@
 <meta property="og:description" content="🔥 JavaScript 面试复习指南   📚 目录        一、JavaScript 基础     二、核心概念     三、ES6+新特性     四、浏览器知识     五、框架与工程化       🧱 一、JavaScript 基础1. 数据类型1.1 基础数据类型和引用数据类型基础数据类型 ：string,number,bigInt,undefined,null,symbol">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-07-19T03:32:42.000Z">
-<meta property="article:modified_time" content="2025-07-19T11:40:45.186Z">
+<meta property="article:modified_time" content="2025-07-19T11:42:27.655Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -110,19 +110,17 @@
 <h2 id="🧱-一、JavaScript-基础"><a href="#🧱-一、JavaScript-基础" class="headerlink" title="🧱 一、JavaScript 基础"></a>🧱 一、JavaScript 基础</h2><h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1. 数据类型"></a>1. 数据类型</h3><h4 id="1-1-基础数据类型和引用数据类型"><a href="#1-1-基础数据类型和引用数据类型" class="headerlink" title="1.1 基础数据类型和引用数据类型"></a>1.1 基础数据类型和引用数据类型</h4><p><strong>基础数据类型</strong> ：string,number,bigInt,undefined,null,symbol,boolean</p>
 <p><strong>引用数据类型</strong> :  array,object,function</p>
 <h4 id="1-2-数据判断的几种方法"><a href="#1-2-数据判断的几种方法" class="headerlink" title="1.2 数据判断的几种方法"></a>1.2 数据判断的几种方法</h4><ul>
-<li>typeof：只能用于判断基本数据类型和简单引用类型（数组），存在局限：<strong>typeof 数组 &#x3D; Object</strong> , <strong>typeof null &#x3D; Object</strong> 且 <strong>typeof 对象不能得到具体的类型</strong>。</li>
-</ul>
-<p><strong>💡 TIP</strong><br>typeof会将null判断为Object，原因是typeof会将所有传进去的值都转成二进制，而js制定的规则会认为二进制前三个值为0的是对象，遵循其他语言的原则js将null定为一长串的0，所以会被误判为对象</p>
-<ul>
+<li><p>typeof：只能用于判断基本数据类型和简单引用类型（数组），存在局限：<strong>typeof 数组 &#x3D; Object</strong> , <strong>typeof null &#x3D; Object</strong> 且 <strong>typeof 对象</strong>不能得到具体的类型。</p>
+</li>
 <li><p>instanceof: 不能用于判断基本数据类型，用于判断复杂的引用数据类型。a instanceof A 是通过判断A(构造函数)的原型（prototype）是否位于对象a的隐式原型链（proto）上（用于判断一个实例是否属于某个数据类）</p>
 </li>
 <li><p>constructor：可以用于判断基本数据类型和复杂的引用数据类型。a.constructor &#x3D; A 是沿着a的隐式原型链上查找constructor属性，检查有与A（构造函数）相等的。（用于判断一个实例的constructor属性是否符合预估类）缺点在于constructor属性容易被修改，导致判断有误。</p>
 </li>
+<li><p>Object.prototype.toString().call()：基本和引用数据类型皆可判断，但自定义类只会显示[Object Object],内置类可以显示具体情况。</p>
+</li>
 </ul>
+<p><strong>💡 TIP</strong><br>typeof会将null判断为Object，原因是typeof会将所有传进去的值都转成二进制，而js制定的规则会认为二进制前三个值为0的是对象，遵循其他语言的原则js将null定为一长串的0，所以会被误判为对象</p>
 <p><strong>💡 TIP</strong><br>instanceof和constructor判断基本数据类型的区别在于：基本数据类型不是对象，所以没有原型链，而constructor会将其隐式包装为对象</p>
-<ul>
-<li>Object.prototype.toString().call()：基本和引用数据类型皆可判断，但自定义类只会显示[Object Object],内置类可以显示具体情况。</li>
-</ul>
 <p><strong>💡 TIP</strong><br>JavaScript 引擎在创建每个对象时，都会给它分配一个 [[Class]] 内部属性，用于标识对象的类型。这个属性是 不可变的，无法通过 JavaScript 代码直接修改，因此 Object.prototype.toString.call() 能稳定返回正确的类型。</p>
 <ul>
 <li>一些常考的判断情况：</li>
