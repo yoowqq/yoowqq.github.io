@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>编程真题 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="2025-7-20   2.小明有一组扑克牌，每张牌上有一个字母或数字（例如：A、2、J等）。现在他想计算这些牌所有可能的排列顺序组合的数量。注意，组合必须满足以下条件：  每个组合至少包含一张牌 组合中牌的顺序必须保持原有顺序的子序列（即不能改变原有牌的顺序） 相同的牌被视为不同的个体（即使牌面相同）  例如，给定扑克牌 [“A”, “A”, “1”]，有效的排列组合有：  单张牌：A(第一个)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程真题">
+<meta property="og:url" content="http://example.com/2025/07/20/%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2025-7-20   2.小明有一组扑克牌，每张牌上有一个字母或数字（例如：A、2、J等）。现在他想计算这些牌所有可能的排列顺序组合的数量。注意，组合必须满足以下条件：  每个组合至少包含一张牌 组合中牌的顺序必须保持原有顺序的子序列（即不能改变原有牌的顺序） 相同的牌被视为不同的个体（即使牌面相同）  例如，给定扑克牌 [“A”, “A”, “1”]，有效的排列组合有：  单张牌：A(第一个)">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-20T04:47:51.000Z">
+<meta property="article:modified_time" content="2025-07-20T05:03:06.823Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-编程真题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/20/%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2025-07-20T04:47:51.000Z" itemprop="datePublished">2025-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      编程真题
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="2025-7-20"><a href="#2025-7-20" class="headerlink" title="2025-7-20"></a>2025-7-20</h2><ol>
+<li></li>
+</ol>
+<p>2.小明有一组扑克牌，每张牌上有一个字母或数字（例如：A、2、J等）。现在他想计算这些牌所有可能的排列顺序组合的数量。注意，组合必须满足以下条件：</p>
+<ol>
+<li>每个组合至少包含一张牌</li>
+<li>组合中牌的顺序必须保持原有顺序的子序列（即不能改变原有牌的顺序）</li>
+<li>相同的牌被视为不同的个体（即使牌面相同）</li>
+</ol>
+<p>例如，给定扑克牌 [“A”, “A”, “1”]，有效的排列组合有：</p>
+<ul>
+<li>单张牌：A(第一个)、A(第二个)、1</li>
+<li>两张牌：AA、A1(第一个A)、A1(第二个A)、1A</li>
+<li>三张牌：AA1、A1A</li>
+</ul>
+<p>总共有8种不同的排列组合。</p>
+<p>3.你有一个初始的字符 ‘s’，你可以进行以下两种操作：</p>
+<ol>
+<li><strong>复制</strong>：复制当前你拥有的所有 ‘s’。这个操作消耗 2 点体力。</li>
+<li><strong>粘贴</strong>：粘贴你最后一次复制的 ‘s’。这个操作消耗 1 点体力。</li>
+</ol>
+<p>给定一个目标数字 n，计算得到恰好 n 个 ‘s’ 所需要的最小体力代价。</p>
+<p>注意：</p>
+<ul>
+<li>初始时你已经拥有 1 个 ‘s’（不需要任何操作）</li>
+<li>你只能粘贴最后一次复制的内容</li>
+<li>你需要恰好获得 n 个 ‘s’，不能多也不能少</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：</p>
+<p>text</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 1</span><br><span class="line">输出：0</span><br><span class="line">解释：初始已经有1个&#x27;s&#x27;，不需要任何操作</span><br></pre></td></tr></table></figure>
+
+<p>示例 2：</p>
+<p>text</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 3</span><br><span class="line">输出：4</span><br><span class="line">解释：</span><br><span class="line">步骤1：复制（消耗2体力，当前有1个&#x27;s&#x27;，复制内容为1）</span><br><span class="line">步骤2：粘贴（消耗1体力，当前有2个&#x27;s&#x27;）</span><br><span class="line">步骤3：粘贴（消耗1体力，当前有3个&#x27;s&#x27;）</span><br><span class="line">总消耗：2 + 1 + 1 = 4</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/20/%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/" data-id="cmdbyp0nv0000s89q9usx50pv" data-title="编程真题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          计算机网络
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/19/JavaScript%E9%9D%A2%E7%BB%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript面经</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/20/%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/">编程真题</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/19/JavaScript%E9%9D%A2%E7%BB%8F/">JavaScript面经</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

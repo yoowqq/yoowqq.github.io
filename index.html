@@ -71,6 +71,201 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-计算机网络" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="article-date">
+  <time class="dt-published" datetime="2025-07-20T15:04:12.000Z" itemprop="datePublished">2025-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="🔥-计算机网络面经"><a href="#🔥-计算机网络面经" class="headerlink" title="🔥 计算机网络面经"></a>🔥 计算机网络面经</h1><h2 id="1-OSI模型"><a href="#1-OSI模型" class="headerlink" title="1. OSI模型"></a>1. OSI模型</h2><p><strong>应用层</strong>：为应用程序或者用户请求提供各种请求服务（HTTP、DNS、SMTP)</p>
+<p><strong>传输层</strong>：端到端，可靠传输服务(TCP、UDP)</p>
+<p><strong>网络层</strong>：主机到主机，路由选择和转发（IP、ICMP）</p>
+<p><strong>链路层</strong>：在相邻节点之间传输数据帧，提供错误检测和纠正功能。（以太网&#x2F;PPP&#x2F;ARP）</p>
+<p><strong>物理层</strong>：物理介质上的传输</p>
+<h2 id="2-HTTP不同版本的区别"><a href="#2-HTTP不同版本的区别" class="headerlink" title="2. HTTP不同版本的区别"></a>2. HTTP不同版本的区别</h2><p><strong>HTTP1.0</strong>: 短连接（每一次响应请求都要重新建立连接）+ expires字段</p>
+<p><strong>HTTP1.1</strong>: 持久连接（Keep-Alive，多个响应和请求可以使用同一个TCP连接）+ 管道化（允许客户端在同一个TCP连接上连续发送多个请求，而无需等待上一个请求的响应返回）+ cache-control字段</p>
+<p><strong>HTTP2.0</strong>: 二进制分帧（将请求和响应分解为更小的二进制帧）+ 多路复用（并行，解决了队头堵塞【响应需要按顺序返回】的问题，使用帧+流ID标识来进行乱序处理）+ 头部压缩</p>
+<p><strong>HTTP3.0</strong>: QUIC协议（基于udp）</p>
+<h2 id="3-HTTP头部字段"><a href="#3-HTTP头部字段" class="headerlink" title="3. HTTP头部字段"></a>3. HTTP头部字段</h2><ul>
+<li><p>请求头</p>
+<ol>
+<li>Accept：指定客户端能够接受的内容类型</li>
+<li>Authorization：用于验证身份的头部</li>
+<li>Cookie：发送给服务器的cookie信息</li>
+<li>Host：指定请求的目标主机和端口号</li>
+<li>UserAgent：标识发出请求的用户代理（通常是浏览器）例如：User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;91.0.4472.124 Safari&#x2F;537.36</li>
+</ol>
+</li>
+<li><p>响应头</p>
+<ol>
+<li>Content-Type：响应体的内容类型</li>
+<li>Content-Length：响应体的长度</li>
+<li>Cache-Control：指定缓存策略</li>
+<li>Set-Cookie：用于在客户端设置cookie</li>
+<li>Date：响应被发送的时间</li>
+<li>Server：服务器的软件信息</li>
+</ol>
+</li>
+<li><p>通用头&#x2F;其他头部</p>
+<ol>
+<li>Connection：指定是否保持连接或者关闭连接，例如：Connection：keep-alive</li>
+<li>Location：指定重定向的目标的URL</li>
+<li>ETag：资源的标识符，用于缓存控制</li>
+</ol>
+</li>
+</ul>
+<h2 id="4-HTTPS"><a href="#4-HTTPS" class="headerlink" title="4. HTTPS"></a>4. HTTPS</h2><p>在HTTP的基础上加入了SSL&#x2F;TLS协议的一种安全通信协议。它通过对传输的数据进行加密，确保数据在客户端和服务器之间的传输过程中不会被窃取或篡改。</p>
+<ul>
+<li><p>对称加密：加密和解密都是使用同一个密钥，常见的对称加密算法有 DES、3DES 和 AES 等</p>
+</li>
+<li><p>非对称加密：加密和解密需要使用两个不同的密钥，公钥（public key）和私钥（private key）。公钥与私钥是一对，如果用公钥对数据进行加密，只有用对应的私钥才能解密；如果用私钥对数据进行加密，那么只有用对应的公钥才能解密。非对称加密算法实现机密信息交换的基本过程是：甲方生成一对密钥并将其中的一把作为公钥对外公开；得到该公钥的乙方使用公钥对机密信息进行加密后再发送给甲方；甲方再用自己保存的私钥对加密后的信息进行解密。常用的非对称加密算法是 RSA 算法。</p>
+</li>
+</ul>
+<img src="https://segmentfault.com/img/bVbClUl/view" />
+
+<h2 id="5-localstorage、cookie、sessionstorage的区别"><a href="#5-localstorage、cookie、sessionstorage的区别" class="headerlink" title="5. localstorage、cookie、sessionstorage的区别"></a>5. localstorage、cookie、sessionstorage的区别</h2><ul>
+<li>存储时效：localstorage永久存储（除非手动清除），sessionStorage会话级（关闭浏览器&#x2F;标签页失效），cookie可设置过期时间（默认为会话级）</li>
+<li>存储大小：localStorage 5-10MB（不同浏览器有差异），sessionStorage 同localStorage，cookie 单个约4KB</li>
+<li>与服务器通信：localStorage 不自动参与，sessionStorage 不自动参与，cookie 每次HTTP请求自动携带</li>
+<li>访问范围：localStorage 同源窗口共享，sessionStorage 仅当前标签页有效（同源也不共享），cookie默认同源窗口共享（可设置domain&#x2F;path限制共享范围）</li>
+<li>典型应用：localStorage 适合长期保存用户偏好，sessionStorage 适合临时存储表单数据，cookie 适合身份认证和会话跟踪</li>
+</ul>
+<h2 id="6-常见的攻击手段"><a href="#6-常见的攻击手段" class="headerlink" title="6. 常见的攻击手段"></a>6. 常见的攻击手段</h2><p><strong>XSS(跨站脚本攻击)</strong>: 在html页面注入恶意代码，执行恶意脚本。防范手段：（1）输入过滤（2）编码转换</p>
+<p><strong>CSRF(跨站请求伪造）</strong>：伪造受信任用户的身份进行资源请求。防范手段：（1）token（ 与 Cookie 自动附带 到请求不同，Token 需要通过 JavaScript 手动添加到 Authorization 头， 浏览器的同源策略禁止跨域 JS 访问其他域的 Token ）</p>
+<h2 id="7-常见的状态码"><a href="#7-常见的状态码" class="headerlink" title="7. 常见的状态码"></a>7. 常见的状态码</h2><ul>
+<li>1–：接受的请求正在处理</li>
+<li>2–：成功（200表示请求成功）</li>
+<li>3–：缓存重定向（300表示资源永久重定向、301表示资源暂时重定向、304表示资源未重定向）</li>
+<li>4–：客户端错误（403表示无权限访问、404表示资源不存在）</li>
+<li>5–：服务器错误（500表示服务器内部错误）</li>
+</ul>
+<h2 id="8-DNS缓存"><a href="#8-DNS缓存" class="headerlink" title="8. DNS缓存"></a>8. DNS缓存</h2><p><strong>强缓存</strong>：指的是浏览器可以直接使用缓存的资源，而无需向服务器发送请求验证资源的有效性。当资源的缓存未过期时，浏览器会直接从本地缓存读取资源。expires：绝对时间，cache-control：相对时间（max-age）</p>
+<p><strong>协商缓存</strong>：在缓存过期后，浏览器发送请求到服务器，由服务器根据请求头的特定字段判断是否更新。如果资源未更新，服务器返回 304 Not Modified，浏览器继续使用本地缓存。last-modified：资源最后修改的时间；if-modified-since: 上次携带的last-modified的值；E-tag：服务器为资源生成的唯一标识（一般是哈希值）；if-none-match：浏览器在请求中携带上次的 ETag 值</p>
+<h2 id="9-三次握手和四次挥手"><a href="#9-三次握手和四次挥手" class="headerlink" title="9.  三次握手和四次挥手"></a>9.  三次握手和四次挥手</h2><ul>
+<li><p>三次握手：目的是确认双方具备收发能力以及同步初始序列号</p>
+<ol>
+<li>客户端发送SYN请求</li>
+<li>服务器发送SYN-ACK确认</li>
+<li>收到SYN-ACK报文后，会回应ACK确认</li>
+</ol>
+<p><em>为什么不能二次握手</em>：无法确认客户端的接收能力是否正常，防止旧的重复连接造成混乱。</p>
+<p><em>为什么不需要四次握手或以上</em>：避免资源的浪费</p>
+</li>
+<li><p>四次挥手：目的是确保双方数据完全传输完毕并安全关闭连接</p>
+<ol>
+<li>主动方发送FIN终止请求</li>
+<li>被动方回应ACK确认收到</li>
+<li>被动方发送FIN终止请求</li>
+<li>主动方回应ACK确认收到</li>
+</ol>
+<p><em>为什么不能少于四次挥手</em>：被动方收到FIN后可能还有数据要发送，需要等待数据传输完毕才能发送自己的FIN。且主动方需要保证数据完整接收。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" data-id="cmdbyp0nz0001s89qeajmelwy" data-title="计算机网络" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-编程真题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/20/%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2025-07-20T04:47:51.000Z" itemprop="datePublished">2025-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/20/%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/">编程真题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="2025-7-20"><a href="#2025-7-20" class="headerlink" title="2025-7-20"></a>2025-7-20</h2><ol>
+<li></li>
+</ol>
+<p>2.小明有一组扑克牌，每张牌上有一个字母或数字（例如：A、2、J等）。现在他想计算这些牌所有可能的排列顺序组合的数量。注意，组合必须满足以下条件：</p>
+<ol>
+<li>每个组合至少包含一张牌</li>
+<li>组合中牌的顺序必须保持原有顺序的子序列（即不能改变原有牌的顺序）</li>
+<li>相同的牌被视为不同的个体（即使牌面相同）</li>
+</ol>
+<p>例如，给定扑克牌 [“A”, “A”, “1”]，有效的排列组合有：</p>
+<ul>
+<li>单张牌：A(第一个)、A(第二个)、1</li>
+<li>两张牌：AA、A1(第一个A)、A1(第二个A)、1A</li>
+<li>三张牌：AA1、A1A</li>
+</ul>
+<p>总共有8种不同的排列组合。</p>
+<p>3.你有一个初始的字符 ‘s’，你可以进行以下两种操作：</p>
+<ol>
+<li><strong>复制</strong>：复制当前你拥有的所有 ‘s’。这个操作消耗 2 点体力。</li>
+<li><strong>粘贴</strong>：粘贴你最后一次复制的 ‘s’。这个操作消耗 1 点体力。</li>
+</ol>
+<p>给定一个目标数字 n，计算得到恰好 n 个 ‘s’ 所需要的最小体力代价。</p>
+<p>注意：</p>
+<ul>
+<li>初始时你已经拥有 1 个 ‘s’（不需要任何操作）</li>
+<li>你只能粘贴最后一次复制的内容</li>
+<li>你需要恰好获得 n 个 ‘s’，不能多也不能少</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：</p>
+<p>text</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 1</span><br><span class="line">输出：0</span><br><span class="line">解释：初始已经有1个&#x27;s&#x27;，不需要任何操作</span><br></pre></td></tr></table></figure>
+
+<p>示例 2：</p>
+<p>text</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 3</span><br><span class="line">输出：4</span><br><span class="line">解释：</span><br><span class="line">步骤1：复制（消耗2体力，当前有1个&#x27;s&#x27;，复制内容为1）</span><br><span class="line">步骤2：粘贴（消耗1体力，当前有2个&#x27;s&#x27;）</span><br><span class="line">步骤3：粘贴（消耗1体力，当前有3个&#x27;s&#x27;）</span><br><span class="line">总消耗：2 + 1 + 1 = 4</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/20/%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/" data-id="cmdbyp0nv0000s89q9usx50pv" data-title="编程真题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-JavaScript面经" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/07/19/JavaScript%E9%9D%A2%E7%BB%8F/" class="article-date">
@@ -263,6 +458,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/20/%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/">编程真题</a>
+          </li>
         
           <li>
             <a href="/2025/07/19/JavaScript%E9%9D%A2%E7%BB%8F/">JavaScript面经</a>
