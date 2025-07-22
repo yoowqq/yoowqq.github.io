@@ -71,6 +71,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Vue面经" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/22/Vue%E9%9D%A2%E7%BB%8F/" class="article-date">
+  <time class="dt-published" datetime="2025-07-22T02:27:01.000Z" itemprop="datePublished">2025-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/22/Vue%E9%9D%A2%E7%BB%8F/">Vue面经</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Vue的生命周期"><a href="#1-Vue的生命周期" class="headerlink" title="1. Vue的生命周期"></a>1. Vue的生命周期</h2><p><strong>核心概念</strong>：vue生命周期是组件从创建、挂载、更新到销毁的完整过程，每个阶段都提供了钩子函数。</p>
+<p><strong>生命周期钩子函数</strong>（以vue2为例）：</p>
+<ol>
+<li><p>创建阶段</p>
+<ul>
+<li><p>beforeCreate：</p>
+<p><em>触发时机</em>：实例初始化后，在数据观测（data observer）和事件监听前<br><em>特征</em>：无法访问data，props，method<br><em>用途</em>：插件注入</p>
+</li>
+<li><p>created：</p>
+<p><em>触发时机</em>：数据观测（data observer）和事件监听后，尚未挂载DOM前</p>
+<p><em>特征</em>：可访问data，props，method</p>
+<p><em>用途</em>：发起异步请求（减少白屏事件）</p>
+</li>
+</ul>
+</li>
+<li><p>挂载阶段</p>
+<ul>
+<li><p>beforeMount：</p>
+<p><em>触发时机</em>：模板已编译为渲染函数，虚拟DOM已创建但未渲染为真实DOM</p>
+<p><em>特征</em>：无法访问真实 DOM（this.$el 仍然是占位符），可访问 this.$options.render（查看编译后的渲染函数）</p>
+</li>
+<li><p>mounted：</p>
+<p><em>触发时机</em>：实例已挂载到真实 DOM</p>
+<p><em>特征</em>：可操作真实DOM，可通过$refs访问子组件（但子组件不一定全部挂载完（尤其异步和条件渲染的）</p>
+<p><em>用途</em>：处理一些依赖DOM的操作</p>
+</li>
+</ul>
+</li>
+<li><p>更新阶段</p>
+<ul>
+<li><p>beforeUpdate：</p>
+<p><em>触发时机</em>：数据变化后，虚拟DOM重新渲染前</p>
+<p><em>特征</em>：数据已更新但视图未同步</p>
+<p><em>用途</em>：记录视图更新前的信息（表单编辑前的快照）</p>
+</li>
+<li><p>updated：</p>
+<p><em>触发时机</em>：虚拟DOM重新渲染并打补丁到真实DOM后</p>
+<p><em>特征</em>：DOM已更新为最新状态</p>
+</li>
+</ul>
+</li>
+<li><p>销毁阶段</p>
+<ul>
+<li><p>beforeDestory：</p>
+<p><em>触发时机</em>：实例销毁前(实例仍完全可用)</p>
+<p><em>特征</em>：所有功能(data&#x2F;methods&#x2F;DOM)仍可用</p>
+<p><em>用途</em>：清除定时器&#x2F;事件监听器,取消未完成的网络请求</p>
+</li>
+<li><p>destroyed：</p>
+<p><em>触发时机</em>：实例销毁后(所有子实例也被销毁)</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>vue3在生命周期上的改动</strong>：</p>
+<ul>
+<li>移除beforeCreate和created，改成在setup（）里面编写逻辑</li>
+<li>新增onRenderTracked：追踪响应式依赖时触发（开发调试用）</li>
+<li>新增onRenderTriggered：响应式依赖触发重新渲染时调用</li>
+<li>beforeDestory和destroyed改为beforeUnmount和unmounted</li>
+<li>钩子函数以onXXX形式导入，在setup（）里面使用</li>
+</ul>
+<h2 id="2-Vue的响应式原理"><a href="#2-Vue的响应式原理" class="headerlink" title="2. Vue的响应式原理"></a>2. Vue的响应式原理</h2><h2 id="3-依赖机制"><a href="#3-依赖机制" class="headerlink" title="3. 依赖机制"></a>3. 依赖机制</h2><h2 id="4-v-if和v-show的区别"><a href="#4-v-if和v-show的区别" class="headerlink" title="4. v-if和v-show的区别"></a>4. v-if和v-show的区别</h2><h2 id="5-什么是keep-alive"><a href="#5-什么是keep-alive" class="headerlink" title="5. 什么是keep-alive"></a>5. 什么是keep-alive</h2><h2 id="6-history和hash路由模式"><a href="#6-history和hash路由模式" class="headerlink" title="6. history和hash路由模式"></a>6. history和hash路由模式</h2><h2 id="7-vue的diff算法"><a href="#7-vue的diff算法" class="headerlink" title="7. vue的diff算法"></a>7. vue的diff算法</h2><h2 id="8-父子组件的生命周期"><a href="#8-父子组件的生命周期" class="headerlink" title="8. 父子组件的生命周期"></a>8. 父子组件的生命周期</h2><h2 id="9-vuex和pinia的区别"><a href="#9-vuex和pinia的区别" class="headerlink" title="9. vuex和pinia的区别"></a>9. vuex和pinia的区别</h2><h2 id="10-nextTick"><a href="#10-nextTick" class="headerlink" title="10.nextTick"></a>10.nextTick</h2><p>它的作用是<strong>延迟回调函数的执行，直到下一次 DOM 更新周期之后</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/22/Vue%E9%9D%A2%E7%BB%8F/" data-id="cmde1dt0d0000749q3sab4z8d" data-title="Vue面经" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-计算机网络" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="article-date">
@@ -463,6 +564,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/07/22/Vue%E9%9D%A2%E7%BB%8F/">Vue面经</a>
+          </li>
         
           <li>
             <a href="/2025/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
