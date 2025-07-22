@@ -13,10 +13,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. Vue的生命周期核心概念：vue生命周期是组件从创建、挂载、更新到销毁的完整过程，每个阶段都提供了钩子函数。 生命周期钩子函数（以vue2为例）：  创建阶段  beforeCreate： 触发时机：实例初始化后，在数据观测（data observer）和事件监听前特征：无法访问data，props，method用途：插件注入  created： 触发时机：数据观测（data observe">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/imgs/2.awebp">
 <meta property="article:published_time" content="2025-07-22T02:27:01.000Z">
-<meta property="article:modified_time" content="2025-07-22T07:14:50.306Z">
+<meta property="article:modified_time" content="2025-07-22T13:26:57.397Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/2.awebp">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -158,19 +160,73 @@
 <li>钩子函数以onXXX形式导入，在setup（）里面使用</li>
 </ul>
 <h2 id="2-Vue的响应式原理"><a href="#2-Vue的响应式原理" class="headerlink" title="2. Vue的响应式原理"></a>2. Vue的响应式原理</h2><p>Vue2使用Object.defineProperty对对象的每个属性进行劫持，转换为getter&#x2F;setter，每一个组件实例对应一个watcher，通过“依赖收集”机制通知更新视图。缺陷：新增属性和通过数组索引修改无法响应。</p>
+<p>Vue3改用proxy作为对象的代理，可以拦截和监听对象和数组的变化；通过<strong>track</strong>函数收集依赖，<strong>trigger</strong>函数触发更新。使用reflect提供了与proxy拦截器方法一一对应的方法，可以方便地执行默认行为。</p>
 <h2 id="3-依赖机制"><a href="#3-依赖机制" class="headerlink" title="3. 依赖机制"></a>3. 依赖机制</h2><p>Vue2：数据读取时触发getter，将当前watcher加入到Dep(依赖集合)；数据修改时触发setter，Dep通知所有关联的watcher执行更新，watch通知组件执行回调函数等。</p>
-<p>Vue3：Vue 会维护一个全局的 targetMap，它是一个 WeakMap，用于存储每个响应式对象及其属性的依赖关系。每个属性会对应一个 Dep（依赖集合），里面存放了所有依赖于该属性的 Reactive Effect。</p>
+<p>Vue3：Vue 会维护一个全局的 targetMap（基础类型使用set），它是一个 WeakMap，用于存储每个响应式对象及其属性的依赖关系。每个属性会对应一个 Dep（依赖集合），里面存放了所有依赖于该属性的 Reactive Effect。</p>
 <p>Vue3的优化：<br>（1）清除无效依赖：在每次依赖收集之前，Vue 会清除之前的依赖，确保依赖关系是最新的。<br>（2）惰性依赖收集：只有在 Reactive Effect 执行时才会收集依赖，避免了不必要的依赖关联。</p>
-<h2 id="4-v-if和v-show的区别"><a href="#4-v-if和v-show的区别" class="headerlink" title="4. v-if和v-show的区别"></a>4. v-if和v-show的区别</h2><h2 id="5-什么是keep-alive"><a href="#5-什么是keep-alive" class="headerlink" title="5. 什么是keep-alive"></a>5. 什么是keep-alive</h2><h2 id="6-history和hash路由模式"><a href="#6-history和hash路由模式" class="headerlink" title="6. history和hash路由模式"></a>6. history和hash路由模式</h2><ul>
+<h2 id="4-v-if和v-show的区别"><a href="#4-v-if和v-show的区别" class="headerlink" title="4. v-if和v-show的区别"></a>4. v-if和v-show的区别</h2><ul>
+<li><em>v-show</em>通过CSS的<em>display</em>属性控制元素的显示与隐藏。即使条件为<em>false</em>，元素依然会被渲染到DOM中，只是不可见。<em>v-if</em>则是通过条件渲染，当条件为<em>false</em>时，元素不会被渲染到DOM中，当条件变为<em>true</em>时，元素才会被渲染。</li>
+<li><em>v-if</em>有更高的切换消耗，因为涉及到DOM的创建和销毁。<em>v-show</em>则有更高的初始渲染消耗，因为无论条件如何，元素始终会被渲染。</li>
+</ul>
+<h2 id="5-什么是keep-alive"><a href="#5-什么是keep-alive" class="headerlink" title="5. 什么是keep-alive"></a>5. 什么是keep-alive</h2><p>keep-alive是vue中的内置组件，能在组件切换过程中将状态保留在内存中，防止重复渲染DOM</p>
+<h2 id="6-history和hash路由模式"><a href="#6-history和hash路由模式" class="headerlink" title="6. history和hash路由模式"></a>6. history和hash路由模式</h2><ul>
 <li>URL结构：hash包含#</li>
 <li>SEO：history路由模式对SEO更友好（完整的URL路径可以被搜索引擎抓取，‘#’后面的内容可能会被搜索引擎忽略</li>
 <li>兼容性：hash路由模式兼容所有浏览器，history模式部分低级浏览器不兼容</li>
 <li>实现原理：history模式基于pushstate和replacestate实现，hash模式通过监听浏览器的onhashchange（）事件查找对应的路由规则。</li>
 <li>刷新：hash（#及后面的内容）的变化不会导致浏览器向服务器发送请求，history刷新会重新向服务器发送请求，需要在服务端做处理，如果没有匹配到资源就返回同一个html页面。（注意：<strong>两种模式单纯url变化都不会立即向服务器发送请求，history模式下需要刷新</strong></li>
 </ul>
-<h2 id="7-vue的diff算法"><a href="#7-vue的diff算法" class="headerlink" title="7. vue的diff算法"></a>7. vue的diff算法</h2><h2 id="8-父子组件的生命周期"><a href="#8-父子组件的生命周期" class="headerlink" title="8. 父子组件的生命周期"></a>8. 父子组件的生命周期</h2><h2 id="9-vuex和pinia的区别"><a href="#9-vuex和pinia的区别" class="headerlink" title="9. vuex和pinia的区别"></a>9. vuex和pinia的区别</h2><h2 id="10-nextTick"><a href="#10-nextTick" class="headerlink" title="10.nextTick"></a>10.nextTick</h2><p>它的作用是<strong>延迟回调函数的执行，直到下一次 DOM 更新周期之后</strong></p>
-<h2 id="11-VUE3和VUE2的区别"><a href="#11-VUE3和VUE2的区别" class="headerlink" title="11. VUE3和VUE2的区别"></a>11. VUE3和VUE2的区别</h2><h2 id="12-MVC和MVVM的区别"><a href="#12-MVC和MVVM的区别" class="headerlink" title="12. MVC和MVVM的区别"></a>12. MVC和MVVM的区别</h2><h2 id="13-什么是双向绑定"><a href="#13-什么是双向绑定" class="headerlink" title="13. 什么是双向绑定"></a>13. 什么是双向绑定</h2><h2 id="14-路由卫士的作用"><a href="#14-路由卫士的作用" class="headerlink" title="14. 路由卫士的作用"></a>14. 路由卫士的作用</h2><p>1.权限验证<br>2.预加载<br>3.逻辑处理（日志）<br>4.导航控制（重定向）</p>
-<h2 id="15-watch和computed的区别"><a href="#15-watch和computed的区别" class="headerlink" title="15. watch和computed的区别"></a>15. watch和computed的区别</h2><h2 id="16-ref和reactive的区别"><a href="#16-ref和reactive的区别" class="headerlink" title="16. ref和reactive的区别"></a>16. ref和reactive的区别</h2><h2 id="17-vue和react的区别"><a href="#17-vue和react的区别" class="headerlink" title="17. vue和react的区别"></a>17. vue和react的区别</h2>
+<h2 id="7-vue的diff算法"><a href="#7-vue的diff算法" class="headerlink" title="7. vue的diff算法"></a>7. vue的diff算法</h2><p>diff算法是比较旧虚拟DOM和新虚拟DOM的不同，从而起到为真实DOM打补丁的作用。</p>
+<p>vue2：采用了双端diff算法，核心方法是[updateChildren],通过<em>新前与旧前</em>、<em>新后与旧后</em>、<em>新后与旧前</em>、<em>新前与旧后</em>、<em>暴力比对</em>5种查找，通过isSameVnode进行对比是否相同（原理是比较标签和key）</p>
+<img src="/imgs/2.awebp" />
+
+<h2 id="8-父子组件的生命周期"><a href="#8-父子组件的生命周期" class="headerlink" title="8. 父子组件的生命周期"></a>8. 父子组件的生命周期</h2><p>父beforeCreate -&gt; 父created -&gt; 父beforeMount -&gt; 子beforeCreate -&gt; 子created -&gt; 子beforeMount -&gt; 子mounted -&gt; 父mounted-&gt;父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated-&gt;父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed（父组件先创建，子组件挂载成功后才挂载父组件，子组件更新完才更新父组件，子组件先销毁才销毁父组件）</p>
+<h2 id="9-vuex和pinia的区别"><a href="#9-vuex和pinia的区别" class="headerlink" title="9. vuex和pinia的区别"></a>9. vuex和pinia的区别</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Vuex</th>
+<th>Pinia</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>API风格</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="10-nextTick"><a href="#10-nextTick" class="headerlink" title="10.nextTick"></a>10.nextTick</h2><p>它的作用是<strong>延迟回调函数的执行，直到下一次 DOM 更新周期之后</strong></p>
+<h2 id="11-VUE3和VUE2的区别"><a href="#11-VUE3和VUE2的区别" class="headerlink" title="11. VUE3和VUE2的区别"></a>11. VUE3和VUE2的区别</h2><ul>
+<li>生命周期：<em>参考问题1</em></li>
+<li>API风格：VUE3采用composition API，VUE2采用options API（Compostion API逻辑性和复用性（vue2通过mixin复用导出，属性相同会报错；vue3则可以通过js函数导出）更好，对typescript支持性更好（option api的类型推导受限，因为 this 的上下文动态性较强，需要额外类型标注））</li>
+<li>diff算法：<em>参考问题7</em></li>
+<li>响应式系统：<em>参考问题2</em></li>
+</ul>
+<h2 id="12-MVC和MVVM的区别"><a href="#12-MVC和MVVM的区别" class="headerlink" title="12. MVC和MVVM的区别"></a>12. MVC和MVVM的区别</h2><p>MVC需要Controller手动更新View，而MVVM的ViewModel会暴露数据，数据变化时View会自动更新</p>
+<h2 id="13-什么是双向绑定"><a href="#13-什么是双向绑定" class="headerlink" title="13. 什么是双向绑定"></a>13. 什么是双向绑定</h2><p>vue数据双向绑定主要是指：数据变化更新视图，视图变化更新数据，使用数据劫持+发布-订阅模式实现，核心是响应式原理（参考问题2）。在vue3中使用v-model实现</p>
+<ul>
+<li>视图变化更新数据：V-&gt;VM-&gt;M(UI通过VM通知model变化)</li>
+<li>数据变化更新视图：响应式原理</li>
+</ul>
+<h2 id="14-路由卫士的作用"><a href="#14-路由卫士的作用" class="headerlink" title="14. 路由卫士的作用"></a>14. 路由卫士的作用</h2><p>1.权限验证<br>2.预加载<br>3.逻辑处理（日志）<br>4.导航控制（重定向）</p>
+<h2 id="15-watch和computed的区别"><a href="#15-watch和computed的区别" class="headerlink" title="15. watch和computed的区别"></a>15. watch和computed的区别</h2><p><strong>watch</strong>：用来监听某个数据的变化，并在数据变化的时候执行自定义回调函数</p>
+<p><strong>computed</strong>：是vue提供的一种计算属性，依赖于其他响应式数据，并在其依赖的数据发送变化的时候自动更新</p>
+<h2 id="16-ref和reactive的区别"><a href="#16-ref和reactive的区别" class="headerlink" title="16. ref和reactive的区别"></a>16. ref和reactive的区别</h2><ul>
+<li>数据类型：ref支持基本数据类型和对象类型，reactive仅支持对象类型</li>
+<li>访问方式：ref必须通过.value操作，reactive可以直接属性</li>
+<li>重新赋值：ref允许整个替换（实际操作的是 .value，reactive不能直接替换整个对象</li>
+</ul>
+<h2 id="17-vue和react的区别"><a href="#17-vue和react的区别" class="headerlink" title="17. vue和react的区别"></a>17. vue和react的区别</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2>
       
     </div>
     <footer class="article-footer">
