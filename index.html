@@ -176,6 +176,9 @@
 <p>vue2：采用了双端diff算法，核心方法是[updateChildren],通过<em>新前与旧前</em>、<em>新后与旧后</em>、<em>新后与旧前</em>、<em>新前与旧后</em>、<em>暴力比对</em>5种查找，通过isSameVnode进行对比是否相同（原理是比较标签和key）</p>
 <img src="/imgs/2.png" />
 
+<p>vue3:</p>
+<img src="/imgs/3.png" />
+
 <h2 id="8-父子组件的生命周期"><a href="#8-父子组件的生命周期" class="headerlink" title="8. 父子组件的生命周期"></a>8. 父子组件的生命周期</h2><p>父beforeCreate -&gt; 父created -&gt; 父beforeMount -&gt; 子beforeCreate -&gt; 子created -&gt; 子beforeMount -&gt; 子mounted -&gt; 父mounted-&gt;父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated-&gt;父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed（父组件先创建，子组件挂载成功后才挂载父组件，子组件更新完才更新父组件，子组件先销毁才销毁父组件）</p>
 <h2 id="9-vuex和pinia的区别"><a href="#9-vuex和pinia的区别" class="headerlink" title="9. vuex和pinia的区别"></a>9. vuex和pinia的区别</h2><table>
 <thead>
