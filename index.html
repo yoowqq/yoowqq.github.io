@@ -155,8 +155,20 @@
 <li>beforeDestory和destroyed改为beforeUnmount和unmounted</li>
 <li>钩子函数以onXXX形式导入，在setup（）里面使用</li>
 </ul>
-<h2 id="2-Vue的响应式原理"><a href="#2-Vue的响应式原理" class="headerlink" title="2. Vue的响应式原理"></a>2. Vue的响应式原理</h2><h2 id="3-依赖机制"><a href="#3-依赖机制" class="headerlink" title="3. 依赖机制"></a>3. 依赖机制</h2><h2 id="4-v-if和v-show的区别"><a href="#4-v-if和v-show的区别" class="headerlink" title="4. v-if和v-show的区别"></a>4. v-if和v-show的区别</h2><h2 id="5-什么是keep-alive"><a href="#5-什么是keep-alive" class="headerlink" title="5. 什么是keep-alive"></a>5. 什么是keep-alive</h2><h2 id="6-history和hash路由模式"><a href="#6-history和hash路由模式" class="headerlink" title="6. history和hash路由模式"></a>6. history和hash路由模式</h2><h2 id="7-vue的diff算法"><a href="#7-vue的diff算法" class="headerlink" title="7. vue的diff算法"></a>7. vue的diff算法</h2><h2 id="8-父子组件的生命周期"><a href="#8-父子组件的生命周期" class="headerlink" title="8. 父子组件的生命周期"></a>8. 父子组件的生命周期</h2><h2 id="9-vuex和pinia的区别"><a href="#9-vuex和pinia的区别" class="headerlink" title="9. vuex和pinia的区别"></a>9. vuex和pinia的区别</h2><h2 id="10-nextTick"><a href="#10-nextTick" class="headerlink" title="10.nextTick"></a>10.nextTick</h2><p>它的作用是<strong>延迟回调函数的执行，直到下一次 DOM 更新周期之后</strong></p>
-
+<h2 id="2-Vue的响应式原理"><a href="#2-Vue的响应式原理" class="headerlink" title="2. Vue的响应式原理"></a>2. Vue的响应式原理</h2><p>Vue2使用Object.defineProperty对对象的每个属性进行劫持，转换为getter&#x2F;setter，每一个组件实例对应一个watcher，通过“依赖收集”机制通知更新视图。缺陷：新增属性和通过数组索引修改无法响应。</p>
+<h2 id="3-依赖机制"><a href="#3-依赖机制" class="headerlink" title="3. 依赖机制"></a>3. 依赖机制</h2><p>Vue2：数据读取时触发getter，将当前watcher加入到Dep(依赖集合)；数据修改时触发setter，Dep通知所有关联的watcher执行更新，watch通知组件执行回调函数等。</p>
+<p>Vue3：Vue 会维护一个全局的 targetMap，它是一个 WeakMap，用于存储每个响应式对象及其属性的依赖关系。每个属性会对应一个 Dep（依赖集合），里面存放了所有依赖于该属性的 Reactive Effect。</p>
+<p>Vue3的优化：<br>（1）清除无效依赖：在每次依赖收集之前，Vue 会清除之前的依赖，确保依赖关系是最新的。<br>（2）惰性依赖收集：只有在 Reactive Effect 执行时才会收集依赖，避免了不必要的依赖关联。</p>
+<h2 id="4-v-if和v-show的区别"><a href="#4-v-if和v-show的区别" class="headerlink" title="4. v-if和v-show的区别"></a>4. v-if和v-show的区别</h2><h2 id="5-什么是keep-alive"><a href="#5-什么是keep-alive" class="headerlink" title="5. 什么是keep-alive"></a>5. 什么是keep-alive</h2><h2 id="6-history和hash路由模式"><a href="#6-history和hash路由模式" class="headerlink" title="6. history和hash路由模式"></a>6. history和hash路由模式</h2><ul>
+<li>URL结构：hash包含#</li>
+<li>SEO：history路由模式对SEO更友好（完整的URL路径可以被搜索引擎抓取，‘#’后面的内容可能会被搜索引擎忽略</li>
+<li>兼容性：hash路由模式兼容所有浏览器，history模式部分低级浏览器不兼容</li>
+<li>实现原理：history模式基于pushstate和replacestate实现，hash模式通过监听浏览器的onhashchange（）事件查找对应的路由规则。</li>
+<li>刷新：hash（#及后面的内容）的变化不会导致浏览器向服务器发送请求，history刷新会重新向服务器发送请求，需要在服务端做处理，如果没有匹配到资源就返回同一个html页面。（注意：<strong>两种模式单纯url变化都不会立即向服务器发送请求，history模式下需要刷新</strong></li>
+</ul>
+<h2 id="7-vue的diff算法"><a href="#7-vue的diff算法" class="headerlink" title="7. vue的diff算法"></a>7. vue的diff算法</h2><h2 id="8-父子组件的生命周期"><a href="#8-父子组件的生命周期" class="headerlink" title="8. 父子组件的生命周期"></a>8. 父子组件的生命周期</h2><h2 id="9-vuex和pinia的区别"><a href="#9-vuex和pinia的区别" class="headerlink" title="9. vuex和pinia的区别"></a>9. vuex和pinia的区别</h2><h2 id="10-nextTick"><a href="#10-nextTick" class="headerlink" title="10.nextTick"></a>10.nextTick</h2><p>它的作用是<strong>延迟回调函数的执行，直到下一次 DOM 更新周期之后</strong></p>
+<h2 id="11-VUE3和VUE2的区别"><a href="#11-VUE3和VUE2的区别" class="headerlink" title="11. VUE3和VUE2的区别"></a>11. VUE3和VUE2的区别</h2><h2 id="12-MVC和MVVM的区别"><a href="#12-MVC和MVVM的区别" class="headerlink" title="12. MVC和MVVM的区别"></a>12. MVC和MVVM的区别</h2><h2 id="13-什么是双向绑定"><a href="#13-什么是双向绑定" class="headerlink" title="13. 什么是双向绑定"></a>13. 什么是双向绑定</h2><h2 id="14-路由卫士的作用"><a href="#14-路由卫士的作用" class="headerlink" title="14. 路由卫士的作用"></a>14. 路由卫士的作用</h2><p>1.权限验证<br>2.预加载<br>3.逻辑处理（日志）<br>4.导航控制（重定向）</p>
+<h2 id="15-watch和computed的区别"><a href="#15-watch和computed的区别" class="headerlink" title="15. watch和computed的区别"></a>15. watch和computed的区别</h2><h2 id="16-ref和reactive的区别"><a href="#16-ref和reactive的区别" class="headerlink" title="16. ref和reactive的区别"></a>16. ref和reactive的区别</h2><h2 id="17-vue和react的区别"><a href="#17-vue和react的区别" class="headerlink" title="17. vue和react的区别"></a>17. vue和react的区别</h2>
       
     </div>
     <footer class="article-footer">
